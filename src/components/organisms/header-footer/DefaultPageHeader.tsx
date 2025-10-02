@@ -25,7 +25,6 @@ export default function DefaultPageHeader() {
   return (
     <Box
       gridArea="header"
-      bgcolor="black"
       display="flex"
       flexDirection="row"
       justifyContent="space-between"
@@ -39,7 +38,22 @@ export default function DefaultPageHeader() {
       top={0}
       zIndex={998}>
       <Box>
-        
+        {/* Add content of header */}
+        <Typography variant="h6">My Portfolio</Typography>
+        <Stack direction="row" spacing={2}>
+          <Button component={Link} href="/" color="inherit">
+            Home
+          </Button>
+          <Button component={Link} href="/about" color="inherit">
+            About
+          </Button>
+          <Button component={Link} href="/projects" color="inherit">
+            Projects
+          </Button>
+          <Button component={Link} href="/contact" color="inherit">
+            Contact
+          </Button>
+        </Stack>
       </Box>
     </Box>
   );

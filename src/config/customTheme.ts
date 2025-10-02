@@ -4,7 +4,7 @@
 // import '@fontsource/cooper-hewitt/700.css';
 // import '@fontsource/roboto-condensed/400.css';
 // import '@fontsource/roboto-condensed/500.css';
-import { createTheme } from '@mui/material/styles';
+import { createTheme, PaletteColorOptions, PaletteOptions } from '@mui/material/styles';
 const { palette } = createTheme();
 declare module '@mui/material/styles' {
   interface BreakpointOverrides {
@@ -31,6 +31,9 @@ declare module '@mui/material/styles' {
         saffron: string;
         breakerBay: string;
       };
+      tertiary: {
+
+      };
       neutral: {
         white: string;
         codGray: string;
@@ -56,6 +59,7 @@ declare module '@mui/material/styles' {
       tundora: string;
       screenColor: string;
     };
+    tertiary: PaletteColorOptions;
     sso: {
       facebook: string;
       google: string;
@@ -100,56 +104,42 @@ const basetheme = createTheme({
     },
   },
 });
+const darkPalette : PaletteOptions = {
+  mode:"dark",
+  primary: {
+
+  },
+  tertiary:{},
+  sso:{
+    google:"",
+    facebook:"",
+    apple:""
+  }
+}
 
 const theme = createTheme({
   ...basetheme,
   palette: {
+    ...darkPalette,
+    background: {
+       default: '#f4f0e8'
+    }, 
     mode:"dark",
     primary: {
-      dark: '#F28D35',
+      dark: '#494848',
+      light: "#f4f0e8",
       main: '#51A696',
-      //@ts-ignore
-      flamingo: ' #F25A38',
-      contrastText: '#fff',
-
-      // light: will be calculated from palette.primary.main,
-      // dark: will be calculated from palette.primary.main,
-      // contrastText: will be calculated to contrast with palette.primary.main
-      flamingo100: '#F25A38',
-      flamingo90: '#FF7452',
-      flamingo80: '#FF8D6B',
-      flamingo70: '#FFA785',
-
-      jaffa100: '#F28D35',
-      jaffa90: '#FFA74F',
-      jaffa80: '#FFBF68',
-      jaffa70: '#FFDA82',
+    },
+    tertiary: {
+      main:"#f4f0e8",
+      dark:"#f4f0e8",
+      light:"#f4f0e8",
     },
     secondary: {
       main: '#51A696',
       dark: '#51A690CC',
       light: '#F2B035',
-      //@ts-ignore
-      poppy: '#BF2A2A',
-      contrastText: '#fff',
-      tallPoppy: '#BF2A2A',
-      breakerBay: '#51A696',
-      saffron: '#F2B035',
-
-      tallPoppy100: '#BF2A2A',
-      tallPoppy90: '#DA4344',
-      tallPoppy80: '#F25D5D',
-      tallPoppy70: '#FF7777',
-
-      saffron100: '#F2B034',
-      saffron90: '#FFCA4E',
-      saffron80: '#FFE368',
-      saffron70: '#FFFD82',
-
-      breakerBay100: '#51A696',
-      breakerBay90: '#6CC0B0',
-      breakerBay80: '#84D9C9',
-      breakerBay70: '#9EF3E3',
+    
     },
     neutral: {
       white: '#FFFFFF',
@@ -170,6 +160,7 @@ const theme = createTheme({
       facebook: '#1877F2',
       apple: '#000000',
     },
+    
   },
   
   components: {
@@ -190,7 +181,14 @@ const theme = createTheme({
     MuiButton: {
       defaultProps: {
         disableElevation: true,
+        
       },
+      variants: [{
+        props:{variant:"contained", color:"primary"},
+        style: {
+          
+        }
+      }]
     },
     MuiLink: {
       defaultProps: {
@@ -262,32 +260,36 @@ const theme = createTheme({
       color: 'black',
     },
     subtitle1: {
-      fontFamily: 'Roboto Condensed',
+      fontFamily: '"Space Grotesk", sans-serif',
       fontWeight: '400',
       fontSize: '20px',
       lineHeight: '26px',
     },
     subtitle2: {
-      fontFamily: 'Roboto Condensed',
+      fontFamily: '"Space Grotesk", sans-serif',
       fontWeight: '400',
     },
     body1: {
-      fontFamily: 'Roboto Condensed',
+      fontFamily: '"Space Grotesk", sans-serif',
       fontWeight: '400',
       fontSize: '16px',
+      [basetheme.breakpoints.up('xs')]: {
+        fontSize: '12px',
+      },
     },
     body2: {
-      fontFamily: 'Roboto Condensed',
+      fontFamily: '"Space Grotesk", sans-serif',
       fontWeight: '400',
       fontSize: '13px',
-    },
-    body3: {
-      fontFamily: 'Roboto Condensed',
-      fontWeight: '400',
-      fontSize: '12px',
+      [basetheme.breakpoints.up('xs')]: {
+        fontSize: '12px',
+      },
+      [basetheme.breakpoints.up('lg')]: {
+        fontSize: '14px',
+      },
     },
     caption: {
-      fontFamily: 'Roboto Condensed',
+     fontFamily: '"Space Grotesk", sans-serif',
       fontWeight: '400',
       fontSize: '10px',
       lineHeight: '14px',
@@ -299,15 +301,21 @@ const theme = createTheme({
       },
     },
     button: {
-      fontFamily: 'Roboto Condensed',
+      fontFamily: '"Space Grotesk", sans-serif',
       fontWeight: '400',
+      
     },
     overline: {
-      fontFamily: 'Roboto Condensed',
+      fontFamily: '"Space Grotesk", sans-serif',
       fontWeight: '400',
       fontSize: '',
     },
+    
   },
+  colorSchemes: {
+    dark: true,
+  }
+    
 });
 
 export default theme;

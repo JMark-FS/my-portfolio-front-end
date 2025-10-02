@@ -39,3 +39,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# custom notes and todos
+../NOTES.md
+NOTES.md
+TODO.md
+*.notes.md
+
+
+# public personal files
+/public/personal/*
