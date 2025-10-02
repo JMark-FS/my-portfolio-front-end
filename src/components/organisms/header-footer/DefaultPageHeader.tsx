@@ -1,4 +1,3 @@
-
 import { useAuthContext } from '@/contexts/AuthContext/AuthContext';
 import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material';
 import { Box, Button, Popover, Stack, Typography } from '@mui/material';
@@ -36,7 +35,8 @@ export default function DefaultPageHeader() {
       left={0}
       right={0}
       top={0}
-      zIndex={998}>
+      zIndex={998}
+    >
       <Box>
         {/* Add content of header */}
         <Typography variant="h6">My Portfolio</Typography>

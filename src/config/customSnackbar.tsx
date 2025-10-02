@@ -30,7 +30,8 @@ export const iconVariant = {
       }}
       width={30}
       height={30}
-      alt="success"></Image>
+      alt="success"
+    ></Image>
   ),
   error: (
     <Image
@@ -40,6 +41,7 @@ export const iconVariant = {
       src="/error.svg"
       width={30}
       height={30}
-      alt="error"></Image>
+      alt="error"
+    ></Image>
   ),
 };

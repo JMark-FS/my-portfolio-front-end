@@ -13,9 +13,9 @@ interface ContactInfoProps {
   contactInfo: ContactInfoItem[];
 }
 
-export default function ContactInfo({ 
-  title = "Contact Information",
-  contactInfo 
+export default function ContactInfo({
+  title = 'Contact Information',
+  contactInfo,
 }: ContactInfoProps) {
   return (
     <Paper elevation={2} sx={{ padding: 3 }}>
@@ -25,12 +25,14 @@ export default function ContactInfo({
       <Stack spacing={3}>
         {contactInfo.map((info, index) => (
           <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Box sx={{ 
-              color: 'primary.main',
-              display: 'flex',
-              alignItems: 'center',
-              minWidth: 24
-            }}>
+            <Box
+              sx={{
+                color: 'primary.main',
+                display: 'flex',
+                alignItems: 'center',
+                minWidth: 24,
+              }}
+            >
               {info.icon}
             </Box>
             <Box>
@@ -38,24 +40,20 @@ export default function ContactInfo({
                 {info.label}
               </Typography>
               {info.link ? (
-                <MuiLink 
-                  href={info.link} 
+                <MuiLink
+                  href={info.link}
                   target={info.link.startsWith('http') ? '_blank' : undefined}
                   rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  sx={{ 
-                    textDecoration: 'none', 
+                  sx={{
+                    textDecoration: 'none',
                     '&:hover': { textDecoration: 'underline' },
-                    color: 'inherit'
+                    color: 'inherit',
                   }}
                 >
-                  <Typography variant="body1">
-                    {info.value}
-                  </Typography>
+                  <Typography variant="body1">{info.value}</Typography>
                 </MuiLink>
               ) : (
-                <Typography variant="body1">
-                  {info.value}
-                </Typography>
+                <Typography variant="body1">{info.value}</Typography>
               )}
             </Box>
           </Box>

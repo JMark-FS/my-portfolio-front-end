@@ -1,5 +1,13 @@
 import { MINIMUM_TOP_HEADER_HEIGHT } from '@/components/organisms/header-footer/DefaultPageHeader';
-import { CalendarMonth, Dashboard, Group, LibraryAdd, ManageAccounts, PanToolSharp, Person } from '@mui/icons-material';
+import {
+  CalendarMonth,
+  Dashboard,
+  Group,
+  LibraryAdd,
+  ManageAccounts,
+  PanToolSharp,
+  Person,
+} from '@mui/icons-material';
 import { Box, Link, List, ListItem, ListItemIcon, ListItemText, Stack } from '@mui/material';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -12,11 +20,12 @@ export default function DefaultPageSideBar() {
       href: '/projects',
       label: 'Projects',
       renderIcon: () => <Dashboard />,
-    },{
+    },
+    {
       href: '/education',
       label: 'Education',
       renderIcon: () => <Dashboard />,
-    }
+    },
   ];
   return (
     <List
@@ -46,7 +55,8 @@ export default function DefaultPageSideBar() {
           md2: 'block',
         },
         borderRight: '1px solid #D4D4D8',
-      }}>
+      }}
+    >
       {sidebarItems.map((item, index) => (
         <React.Fragment key={item.href}>
           {/* @ts-ignore */}
@@ -90,12 +100,14 @@ export default function DefaultPageSideBar() {
                 },
               },
             }}
-            selected={router.pathname.includes(item.href)}>
+            selected={router.pathname.includes(item.href)}
+          >
             {/* {lgUp ? ( */}
             <ListItemIcon
               sx={{
                 cursor: 'pointer',
-              }}>
+              }}
+            >
               {item.renderIcon()}
             </ListItemIcon>
             {/* ) : (

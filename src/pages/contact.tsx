@@ -7,9 +7,12 @@ export default function Contact() {
     <DefaultTemplate>
       <Head>
         <title>Contact - My Portfolio</title>
-        <meta name="description" content="Get in touch with me for opportunities, collaborations, or just to say hello!" />
+        <meta
+          name="description"
+          content="Get in touch with me for opportunities, collaborations, or just to say hello!"
+        />
       </Head>
-      
+
       <ContactPageContent />
     </DefaultTemplate>
   );

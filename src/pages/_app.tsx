@@ -8,12 +8,10 @@ import AuthProvider from '@/contexts/AuthContext/AuthProvider';
 import { SnackbarProvider } from 'notistack';
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
- 
-  
   return (
     <ThemeProvider theme={theme}>
-              <GlobalStyles styles={{ body: {backgroundColor: theme.palette.background.default} }} />
-      
+      <GlobalStyles styles={{ body: { backgroundColor: theme.palette.background.default } }} />
+
       <AuthProvider>
         <SnackbarProvider
           Components={{
@@ -21,7 +19,8 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
             error: SlydynToast,
           }}
           iconVariant={iconVariant}
-          maxSnack={1}>
+          maxSnack={1}
+        >
           {/* <SessionProvider session={session}> */}
           <Component {...pageProps} />
           {/* </SessionProvider> */}

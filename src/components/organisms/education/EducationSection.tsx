@@ -17,21 +17,29 @@ interface EducationSectionProps {
   variant?: 'detailed' | 'compact';
 }
 
-export default function EducationSection({ 
-  title = "Education",
+export default function EducationSection({
+  title = 'Education',
   education,
-  variant = 'detailed'
+  variant = 'detailed',
 }: EducationSectionProps) {
   return (
     <Paper elevation={2} sx={{ padding: 3 }}>
       <Typography variant="h4" component="h2" gutterBottom>
         {title}
       </Typography>
-      
+
       <Stack spacing={variant === 'detailed' ? 3 : 2}>
         {education.map((edu, index) => (
           <Box key={index}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 1 }}>
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'flex-start',
+                flexWrap: 'wrap',
+                gap: 1,
+              }}
+            >
               <Box>
                 <Typography variant="h6" component="h3">
                   {edu.degree}
@@ -58,7 +66,7 @@ export default function EducationSection({
                 GPA: {edu.gpa.toFixed(2)}/4.0
               </Typography>
             )}
-            
+
             {edu.description && (
               <Typography variant="body2" sx={{ marginTop: 1 }}>
                 {edu.description}
@@ -72,15 +80,15 @@ export default function EducationSection({
                 </Typography>
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, marginTop: 0.5 }}>
                   {edu.honors.map((honor, honorIndex) => (
-                    <Typography 
+                    <Typography
                       key={honorIndex}
-                      variant="caption" 
-                      sx={{ 
+                      variant="caption"
+                      sx={{
                         backgroundColor: 'primary.light',
                         color: 'primary.contrastText',
                         padding: '2px 6px',
                         borderRadius: 1,
-                        fontSize: '0.7rem'
+                        fontSize: '0.7rem',
                       }}
                     >
                       {honor}

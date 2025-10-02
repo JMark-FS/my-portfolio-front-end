@@ -17,36 +17,44 @@ interface ProjectsGridProps {
   };
 }
 
-export default function ProjectsGrid({ 
+export default function ProjectsGrid({
   projects,
   title,
   showFeaturedSeparately = false,
   maxItems,
   variant = 'standard',
-  gridColumns = { xs: 1, sm: 2, lg: 3 }
+  gridColumns = { xs: 1, sm: 2, lg: 3 },
 }: ProjectsGridProps) {
   const displayProjects = maxItems ? projects.slice(0, maxItems) : projects;
   const featuredProjects = showFeaturedSeparately ? displayProjects.filter(p => p.featured) : [];
-  const otherProjects = showFeaturedSeparately ? displayProjects.filter(p => !p.featured) : displayProjects;
+  const otherProjects = showFeaturedSeparately
+    ? displayProjects.filter(p => !p.featured)
+    : displayProjects;
 
   const getGridColumns = (featured: boolean = false) => {
     if (featured) {
       return { xs: '1fr', md: 'repeat(2, 1fr)' };
     }
-    
+
     const { xs, sm, md, lg } = gridColumns;
-    return { 
+    return {
       xs: `repeat(${xs}, 1fr)`,
       ...(sm && { sm: `repeat(${sm}, 1fr)` }),
       ...(md && { md: `repeat(${md}, 1fr)` }),
-      ...(lg && { lg: `repeat(${lg}, 1fr)` })
+      ...(lg && { lg: `repeat(${lg}, 1fr)` }),
     };
   };
 
   return (
     <Box>
       {title && (
-        <Typography variant="h3" component="h1" gutterBottom textAlign="center" sx={{ marginBottom: 4 }}>
+        <Typography
+          variant="h3"
+          component="h1"
+          gutterBottom
+          textAlign="center"
+          sx={{ marginBottom: 4 }}
+        >
           {title}
         </Typography>
       )}
@@ -58,14 +66,14 @@ export default function ProjectsGrid({
             <Typography variant="h4" component="h2" gutterBottom sx={{ marginBottom: 3 }}>
               Featured Projects
             </Typography>
-            <Box 
-              sx={{ 
+            <Box
+              sx={{
                 display: 'grid',
                 gridTemplateColumns: getGridColumns(true),
-                gap: 3
+                gap: 3,
               }}
             >
-              {featuredProjects.map((project) => (
+              {featuredProjects.map(project => (
                 <ProjectCard key={project.id} project={project} variant="featured" />
               ))}
             </Box>
@@ -80,14 +88,14 @@ export default function ProjectsGrid({
                 Other Projects
               </Typography>
             )}
-            <Box 
-              sx={{ 
+            <Box
+              sx={{
                 display: 'grid',
                 gridTemplateColumns: getGridColumns(false),
-                gap: 3
+                gap: 3,
               }}
             >
-              {otherProjects.map((project) => (
+              {otherProjects.map(project => (
                 <ProjectCard key={project.id} project={project} variant={variant} />
               ))}
             </Box>
@@ -100,12 +108,7 @@ export default function ProjectsGrid({
             <Typography variant="body1" color="text.secondary" gutterBottom>
               Showing {maxItems} of {projects.length} projects
             </Typography>
-            <Button 
-              component={Link} 
-              href="/projects" 
-              variant="outlined" 
-              size="large"
-            >
+            <Button component={Link} href="/projects" variant="outlined" size="large">
               View All Projects
             </Button>
           </Box>

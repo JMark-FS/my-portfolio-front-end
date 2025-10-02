@@ -10,9 +10,9 @@ interface FAQSectionProps {
   faqs: FAQItem[];
 }
 
-export default function FAQSection({ 
-  title = "Frequently Asked Questions",
-  faqs 
+export default function FAQSection({
+  title = 'Frequently Asked Questions',
+  faqs,
 }: FAQSectionProps) {
   return (
     <Paper elevation={2} sx={{ padding: 3 }}>

@@ -4,22 +4,26 @@ import { z } from 'zod';
  * Contact form validator schema for validating contact form submissions
  */
 export const ContactFormValidator = z.object({
-  name: z.string()
+  name: z
+    .string()
     .min(2, 'Name must be at least 2 characters')
     .max(100, 'Name must be less than 100 characters')
     .regex(/^[a-zA-Z\s\-']+$/, 'Name can only contain letters, spaces, hyphens, and apostrophes'),
-  
-  email: z.string()
+
+  email: z
+    .string()
     .email('Please enter a valid email address')
     .max(255, 'Email must be less than 255 characters'),
-  
-  subject: z.string()
+
+  subject: z
+    .string()
     .min(3, 'Subject must be at least 3 characters')
     .max(200, 'Subject must be less than 200 characters'),
-  
-  message: z.string()
+
+  message: z
+    .string()
     .min(10, 'Message must be at least 10 characters')
-    .max(2000, 'Message must be less than 2000 characters')
+    .max(2000, 'Message must be less than 2000 characters'),
 });
 
 /**
@@ -27,7 +31,8 @@ export const ContactFormValidator = z.object({
  */
 export const ContactInfoValidator = z.object({
   email: z.string().email('Must be a valid email address'),
-  phone: z.string()
+  phone: z
+    .string()
     .regex(/^[\+]?[1-9][\d]{0,15}$/, 'Must be a valid phone number')
     .optional(),
   location: z.string().min(1, 'Location cannot be empty').optional(),
@@ -51,7 +56,13 @@ export const ContactSubmissionResponseValidator = z.object({
  */
 export const ContactFormSubmissionValidator = ContactFormValidator.extend({
   timestamp: z.string().datetime().optional(),
-  ip: z.string().regex(/^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$|^(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$/, 'Must be a valid IP address').optional(),
+  ip: z
+    .string()
+    .regex(
+      /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$|^(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$/,
+      'Must be a valid IP address'
+    )
+    .optional(),
   userAgent: z.string().optional(),
   source: z.string().optional(), // Where the form was submitted from
 });
@@ -107,7 +118,8 @@ export const validateEmail = (email: string) => {
 };
 
 export const validateName = (name: string) => {
-  const nameSchema = z.string()
+  const nameSchema = z
+    .string()
     .min(2, 'Name must be at least 2 characters')
     .regex(/^[a-zA-Z\s\-']+$/, 'Name can only contain letters, spaces, hyphens, and apostrophes');
   return nameSchema.safeParse(name);

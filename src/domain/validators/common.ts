@@ -40,11 +40,15 @@ export const ErrorResponseValidator = z.object({
   statusCode: z.number().int(),
   timestamp: z.string().datetime().optional(),
   path: z.string().optional(),
-  details: z.array(z.object({
-    field: z.string().optional(),
-    message: z.string(),
-    code: z.string().optional(),
-  })).optional(),
+  details: z
+    .array(
+      z.object({
+        field: z.string().optional(),
+        message: z.string(),
+        code: z.string().optional(),
+      })
+    )
+    .optional(),
 });
 
 /**
@@ -70,10 +74,14 @@ export const IdValidator = z.string().uuid('Must be a valid UUID');
 /**
  * Generic slug validator
  */
-export const SlugValidator = z.string()
+export const SlugValidator = z
+  .string()
   .min(1, 'Slug cannot be empty')
   .max(100, 'Slug must be less than 100 characters')
-  .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Slug must contain only lowercase letters, numbers, and hyphens');
+  .regex(
+    /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+    'Slug must contain only lowercase letters, numbers, and hyphens'
+  );
 
 /**
  * Generic email validator
@@ -93,14 +101,18 @@ export const DateValidator = z.string().datetime('Must be a valid ISO 8601 date'
 /**
  * Generic phone number validator
  */
-export const PhoneValidator = z.string()
+export const PhoneValidator = z
+  .string()
   .regex(/^[\+]?[1-9][\d]{0,15}$/, 'Must be a valid phone number');
 
 /**
  * Search query validator
  */
 export const SearchQueryValidator = z.object({
-  query: z.string().min(1, 'Search query cannot be empty').max(255, 'Search query must be less than 255 characters'),
+  query: z
+    .string()
+    .min(1, 'Search query cannot be empty')
+    .max(255, 'Search query must be less than 255 characters'),
   page: z.number().int().positive().optional().default(1),
   limit: z.number().int().positive().max(100).optional().default(20),
   sortBy: z.string().optional(),
@@ -115,7 +127,10 @@ export type ApiResponse<T = unknown> = Omit<z.infer<typeof ApiResponseValidator>
   data?: T;
 };
 
-export type PaginatedResponse<T = unknown> = Omit<z.infer<typeof PaginatedResponseValidator>, 'data'> & {
+export type PaginatedResponse<T = unknown> = Omit<
+  z.infer<typeof PaginatedResponseValidator>,
+  'data'
+> & {
   data: T[];
 };
 
@@ -126,7 +141,10 @@ export type SearchQuery = z.infer<typeof SearchQueryValidator>;
 /**
  * Validation helper functions
  */
-export const validateApiResponse = <T>(data: unknown, dataValidator?: z.ZodSchema<T>): ApiResponse<T> => {
+export const validateApiResponse = <T>(
+  data: unknown,
+  dataValidator?: z.ZodSchema<T>
+): ApiResponse<T> => {
   const result = ApiResponseValidator.parse(data);
   if (dataValidator && result.data !== undefined) {
     result.data = dataValidator.parse(result.data);
@@ -135,7 +153,7 @@ export const validateApiResponse = <T>(data: unknown, dataValidator?: z.ZodSchem
 };
 
 export const validatePaginatedResponse = <T>(
-  data: unknown, 
+  data: unknown,
   itemValidator: z.ZodSchema<T>
 ): PaginatedResponse<T> => {
   const result = PaginatedResponseValidator.parse(data);

@@ -8,22 +8,22 @@ interface UserProfileHeaderProps {
   initials?: string;
 }
 
-export default function UserProfileHeader({ 
-  name, 
-  title, 
-  subtitle, 
-  avatarSrc, 
-  initials = "JP" 
+export default function UserProfileHeader({
+  name,
+  title,
+  subtitle,
+  avatarSrc,
+  initials = 'JP',
 }: UserProfileHeaderProps) {
   return (
     <Box textAlign="center">
       <Avatar
-        sx={{ 
-          width: { xs: 120, md: 150 }, 
-          height: { xs: 120, md: 150 }, 
+        sx={{
+          width: { xs: 120, md: 150 },
+          height: { xs: 120, md: 150 },
           margin: '0 auto 2rem',
           border: '4px solid',
-          borderColor: 'primary.main'
+          borderColor: 'primary.main',
         }}
         alt={`${name} Profile Picture`}
         src={avatarSrc}

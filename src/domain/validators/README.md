@@ -5,6 +5,7 @@ This directory contains Zod validators for all data structures used in the portf
 ## Overview
 
 All validators are built using [Zod](https://zod.dev/) and provide:
+
 - Runtime type validation
 - TypeScript type inference
 - Detailed error messages
@@ -14,6 +15,7 @@ All validators are built using [Zod](https://zod.dev/) and provide:
 ## Validators
 
 ### 📋 Project Validators (`project.ts`)
+
 Validates project portfolio data from external APIs or CMS.
 
 ```typescript
@@ -32,11 +34,13 @@ if (result.success) {
 ```
 
 **Types Available:**
+
 - `Project` - Complete project data
 - `ProjectCreate` - For creating new projects (without ID)
 - `ProjectUpdate` - For updating projects (partial fields)
 
 ### 📧 Contact Validators (`contact.ts`)
+
 Validates contact form submissions and contact information.
 
 ```typescript
@@ -58,11 +62,13 @@ if (!emailResult.success) {
 ```
 
 **Types Available:**
+
 - `ContactForm` - Basic contact form data
 - `ContactInfo` - Contact information structure
 - `ContactFormSubmission` - Extended form with metadata
 
 ### 🔐 Auth Validators (`auth.ts`)
+
 Validates authentication-related data including login, registration, and user profiles.
 
 ```typescript
@@ -71,7 +77,7 @@ import { validateUserProfile, validateLoginCredentials } from '@/domain/validato
 // Validate login
 const credentials = validateLoginCredentials({
   email: 'user@example.com',
-  password: 'SecurePass123!'
+  password: 'SecurePass123!',
 });
 
 // Validate API response
@@ -79,12 +85,14 @@ const userProfile = validateUserProfile(authApiResponse.user);
 ```
 
 **Types Available:**
+
 - `UserProfile` - Complete user profile
 - `LoginCredentials` - Login form data
 - `Registration` - User registration data
 - `AuthResponse` - API authentication response
 
 ### 👤 Portfolio Validators (`portfolio.ts`)
+
 Validates portfolio/about page data including skills, experience, and education.
 
 ```typescript
@@ -103,12 +111,14 @@ const experience = validateExperience({
 ```
 
 **Types Available:**
+
 - `Skill` - Individual skill data
 - `Experience` - Work experience entry
 - `Education` - Educational background
 - `PortfolioData` - Complete portfolio data structure
 
 ### 🔧 Common Validators (`common.ts`)
+
 Provides common validation patterns and API response structures.
 
 ```typescript
@@ -122,6 +132,7 @@ const paginatedProjects = validatePaginatedResponse(apiData, ProjectValidator);
 ```
 
 **Types Available:**
+
 - `ApiResponse<T>` - Generic API response wrapper
 - `PaginatedResponse<T>` - Paginated API response
 - `ErrorResponse` - API error response
@@ -130,6 +141,7 @@ const paginatedProjects = validatePaginatedResponse(apiData, ProjectValidator);
 ## Usage Patterns
 
 ### Basic Validation
+
 ```typescript
 import { validateProject } from '@/domain/validators';
 
@@ -143,6 +155,7 @@ try {
 ```
 
 ### Safe Validation
+
 ```typescript
 import { safeValidateProject } from '@/domain/validators';
 
@@ -156,32 +169,34 @@ if (result.success) {
 ```
 
 ### API Integration Example
+
 ```typescript
 import { validateProjects, validateApiResponse } from '@/domain/validators';
 
 async function fetchProjects(): Promise<Project[]> {
   const response = await fetch('/api/projects');
   const data = await response.json();
-  
+
   // Validate API response structure
   const apiResponse = validateApiResponse(data);
-  
+
   if (!apiResponse.success) {
     throw new Error(apiResponse.error);
   }
-  
+
   // Validate and return projects data
   return validateProjects(apiResponse.data);
 }
 ```
 
 ### Form Validation Example
+
 ```typescript
 import { safeValidateContactForm } from '@/domain/validators';
 
 const handleFormSubmit = (formData: unknown) => {
   const result = safeValidateContactForm(formData);
-  
+
   if (!result.success) {
     // Set form errors
     const errors = result.error.issues.reduce((acc, issue) => {
@@ -191,7 +206,7 @@ const handleFormSubmit = (formData: unknown) => {
     setFormErrors(errors);
     return;
   }
-  
+
   // Submit valid data
   submitContactForm(result.data);
 };
@@ -200,16 +215,18 @@ const handleFormSubmit = (formData: unknown) => {
 ## Error Handling
 
 ### Validation Error Structure
+
 ```typescript
 // Zod validation error provides:
 error.issues.forEach(issue => {
-  console.log(issue.path);    // ['email'] - field path
+  console.log(issue.path); // ['email'] - field path
   console.log(issue.message); // 'Invalid email address'
-  console.log(issue.code);    // 'invalid_string' - error type
+  console.log(issue.code); // 'invalid_string' - error type
 });
 ```
 
 ### Custom Error Messages
+
 All validators include human-readable error messages suitable for displaying to users.
 
 ## Best Practices

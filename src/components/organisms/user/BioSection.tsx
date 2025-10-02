@@ -5,10 +5,7 @@ interface BioSectionProps {
   paragraphs: string[];
 }
 
-export default function BioSection({ 
-  title = "My Story",
-  paragraphs 
-}: BioSectionProps) {
+export default function BioSection({ title = 'My Story', paragraphs }: BioSectionProps) {
   return (
     <Paper elevation={2} sx={{ padding: 3 }}>
       <Typography variant="h4" component="h2" gutterBottom>

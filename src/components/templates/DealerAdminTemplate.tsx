@@ -25,7 +25,8 @@ export function DealerAdminTemplate({ children }: { children: React.ReactNode })
               md2: '90px',
               lg: '250px',
             }}
-            bgcolor="white">
+            bgcolor="white"
+          >
             {children}
           </Stack>
         </Box>
@@ -35,7 +36,8 @@ export function DealerAdminTemplate({ children }: { children: React.ReactNode })
               md2: '90px',
               lg: '250px',
             },
-          }}>
+          }}
+        >
           <DefaultPageFooter />
         </Box>
       </Box>

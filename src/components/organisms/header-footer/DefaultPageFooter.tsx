@@ -1,4 +1,3 @@
-
 import { Box, Stack, Typography } from '@mui/material';
 
 export const linkStyle = {
@@ -11,10 +10,8 @@ export const linkStyle = {
 
 export default function DefaultPageFooter() {
   return (
-    <Box component="footer" width="100vw" bgcolor="black" color="white" >
-      <Box padding={2}>
-
-      </Box>
+    <Box component="footer" width="100vw" bgcolor="black" color="white">
+      <Box padding={2}></Box>
     </Box>
   );
 }

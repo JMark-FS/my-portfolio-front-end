@@ -6,12 +6,17 @@ import { z } from 'zod';
 export const ProjectValidator = z.object({
   id: z.number().int().positive(),
   title: z.string().min(1, 'Title is required').max(200, 'Title must be less than 200 characters'),
-  description: z.string().min(1, 'Description is required').max(1000, 'Description must be less than 1000 characters'),
+  description: z
+    .string()
+    .min(1, 'Description is required')
+    .max(1000, 'Description must be less than 1000 characters'),
   image: z.string().url('Image must be a valid URL').optional().or(z.string().min(1)),
-  technologies: z.array(z.string().min(1, 'Technology name cannot be empty')).min(1, 'At least one technology is required'),
+  technologies: z
+    .array(z.string().min(1, 'Technology name cannot be empty'))
+    .min(1, 'At least one technology is required'),
   githubUrl: z.string().url('GitHub URL must be valid').optional(),
   liveUrl: z.string().url('Live URL must be valid').optional(),
-  featured: z.boolean().optional().default(false)
+  featured: z.boolean().optional().default(false),
 });
 
 /**

@@ -8,20 +8,18 @@ import { createTheme, PaletteColorOptions, PaletteOptions } from '@mui/material/
 const { palette } = createTheme();
 declare module '@mui/material/styles' {
   interface BreakpointOverrides {
-   mbs: true,
-   mbm: true, 
-   mbl: true,
-   tbs: true,
-   tbm: true,
-   tbl: true,
-   dts: true,
-   dtm: true,
-   dtl: true,
+    mbs: true;
+    mbm: true;
+    mbl: true;
+    tbs: true;
+    tbm: true;
+    tbl: true;
+    dts: true;
+    dtm: true;
+    dtl: true;
   }
   interface Theme {
-    
     color: {
-      
       primary: {
         jaffa: string;
         flamingo: string;
@@ -31,9 +29,7 @@ declare module '@mui/material/styles' {
         saffron: string;
         breakerBay: string;
       };
-      tertiary: {
-
-      };
+      tertiary: {};
       neutral: {
         white: string;
         codGray: string;
@@ -104,42 +100,39 @@ const basetheme = createTheme({
     },
   },
 });
-const darkPalette : PaletteOptions = {
-  mode:"dark",
-  primary: {
-
+const darkPalette: PaletteOptions = {
+  mode: 'dark',
+  primary: {},
+  tertiary: {},
+  sso: {
+    google: '',
+    facebook: '',
+    apple: '',
   },
-  tertiary:{},
-  sso:{
-    google:"",
-    facebook:"",
-    apple:""
-  }
-}
+};
 
 const theme = createTheme({
   ...basetheme,
   palette: {
     ...darkPalette,
     background: {
-       default: '#f4f0e8'
-    }, 
-    mode:"dark",
+      default: '#f4f0e8',
+    },
+    mode: 'dark',
     primary: {
       dark: '#494848',
-      light: "#f4f0e8",
+      light: '#f4f0e8',
       main: '#51A696',
     },
     tertiary: {
-      main:"#f4f0e8",
-      dark:"#f4f0e8",
-      light:"#f4f0e8",
+      main: '#f4f0e8',
+      dark: '#f4f0e8',
+      light: '#f4f0e8',
     },
     secondary: {
       main: '#51A696',
       dark: '#51A690CC',
       light: '#F2B035',
-    
     },
     neutral: {
       white: '#FFFFFF',
@@ -160,9 +153,8 @@ const theme = createTheme({
       facebook: '#1877F2',
       apple: '#000000',
     },
-    
   },
-  
+
   components: {
     MuiTooltip: {
       styleOverrides: {
@@ -181,14 +173,13 @@ const theme = createTheme({
     MuiButton: {
       defaultProps: {
         disableElevation: true,
-        
       },
-      variants: [{
-        props:{variant:"contained", color:"primary"},
-        style: {
-          
-        }
-      }]
+      variants: [
+        {
+          props: { variant: 'contained', color: 'primary' },
+          style: {},
+        },
+      ],
     },
     MuiLink: {
       defaultProps: {
@@ -289,7 +280,7 @@ const theme = createTheme({
       },
     },
     caption: {
-     fontFamily: '"Space Grotesk", sans-serif',
+      fontFamily: '"Space Grotesk", sans-serif',
       fontWeight: '400',
       fontSize: '10px',
       lineHeight: '14px',
@@ -303,19 +294,16 @@ const theme = createTheme({
     button: {
       fontFamily: '"Space Grotesk", sans-serif',
       fontWeight: '400',
-      
     },
     overline: {
       fontFamily: '"Space Grotesk", sans-serif',
       fontWeight: '400',
       fontSize: '',
     },
-    
   },
   colorSchemes: {
     dark: true,
-  }
-    
+  },
 });
 
 export default theme;

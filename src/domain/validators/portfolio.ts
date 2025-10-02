@@ -5,16 +5,19 @@ import { z } from 'zod';
  */
 export const SkillValidator = z.object({
   id: z.string().uuid().optional(),
-  name: z.string().min(1, 'Skill name is required').max(50, 'Skill name must be less than 50 characters'),
+  name: z
+    .string()
+    .min(1, 'Skill name is required')
+    .max(50, 'Skill name must be less than 50 characters'),
   category: z.enum([
     'Frontend',
-    'Backend', 
+    'Backend',
     'Database',
     'DevOps',
     'Mobile',
     'Design',
     'Testing',
-    'Other'
+    'Other',
   ]),
   proficiency: z.enum(['Beginner', 'Intermediate', 'Advanced', 'Expert']),
   yearsOfExperience: z.number().min(0).max(50).optional(),
@@ -31,11 +34,20 @@ export const SkillsArrayValidator = z.array(SkillValidator);
  */
 export const ExperienceValidator = z.object({
   id: z.string().uuid().optional(),
-  title: z.string().min(1, 'Job title is required').max(100, 'Job title must be less than 100 characters'),
-  company: z.string().min(1, 'Company name is required').max(100, 'Company name must be less than 100 characters'),
+  title: z
+    .string()
+    .min(1, 'Job title is required')
+    .max(100, 'Job title must be less than 100 characters'),
+  company: z
+    .string()
+    .min(1, 'Company name is required')
+    .max(100, 'Company name must be less than 100 characters'),
   location: z.string().max(100, 'Location must be less than 100 characters').optional(),
   startDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Start date must be in YYYY-MM-DD format'),
-  endDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'End date must be in YYYY-MM-DD format').optional(),
+  endDate: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/, 'End date must be in YYYY-MM-DD format')
+    .optional(),
   isCurrent: z.boolean().default(false),
   description: z.string().max(1000, 'Description must be less than 1000 characters').optional(),
   responsibilities: z.array(z.string().min(1)).optional(),
@@ -55,11 +67,20 @@ export const ExperienceArrayValidator = z.array(ExperienceValidator);
  */
 export const EducationValidator = z.object({
   id: z.string().uuid().optional(),
-  institution: z.string().min(1, 'Institution name is required').max(100, 'Institution name must be less than 100 characters'),
-  degree: z.string().min(1, 'Degree is required').max(100, 'Degree must be less than 100 characters'),
+  institution: z
+    .string()
+    .min(1, 'Institution name is required')
+    .max(100, 'Institution name must be less than 100 characters'),
+  degree: z
+    .string()
+    .min(1, 'Degree is required')
+    .max(100, 'Degree must be less than 100 characters'),
   fieldOfStudy: z.string().max(100, 'Field of study must be less than 100 characters').optional(),
   startDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Start date must be in YYYY-MM-DD format'),
-  endDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'End date must be in YYYY-MM-DD format').optional(),
+  endDate: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/, 'End date must be in YYYY-MM-DD format')
+    .optional(),
   isCurrent: z.boolean().default(false),
   gpa: z.number().min(0).max(4.0).optional(),
   honors: z.array(z.string().min(1)).optional(),
@@ -89,20 +110,24 @@ export const PortfolioDataValidator = z.object({
   skills: SkillsArrayValidator,
   experience: ExperienceArrayValidator,
   education: EducationArrayValidator,
-  socialLinks: z.object({
-    email: z.string().email().optional(),
-    linkedin: z.string().url().optional(),
-    github: z.string().url().optional(),
-    website: z.string().url().optional(),
-    twitter: z.string().url().optional(),
-    portfolio: z.string().url().optional(),
-  }).optional(),
-  preferences: z.object({
-    isPublic: z.boolean().default(true),
-    showEmail: z.boolean().default(true),
-    showPhone: z.boolean().default(false),
-    theme: z.enum(['light', 'dark', 'auto']).default('auto'),
-  }).optional(),
+  socialLinks: z
+    .object({
+      email: z.string().email().optional(),
+      linkedin: z.string().url().optional(),
+      github: z.string().url().optional(),
+      website: z.string().url().optional(),
+      twitter: z.string().url().optional(),
+      portfolio: z.string().url().optional(),
+    })
+    .optional(),
+  preferences: z
+    .object({
+      isPublic: z.boolean().default(true),
+      showEmail: z.boolean().default(true),
+      showPhone: z.boolean().default(false),
+      theme: z.enum(['light', 'dark', 'auto']).default('auto'),
+    })
+    .optional(),
 });
 
 /**

@@ -1,12 +1,4 @@
-import { 
-  Paper, 
-  Typography, 
-  TextField, 
-  Button, 
-  Stack, 
-  Box,
-  Alert 
-} from '@mui/material';
+import { Paper, Typography, TextField, Button, Stack, Box, Alert } from '@mui/material';
 import { useState } from 'react';
 
 export interface ContactFormData {
@@ -23,18 +15,18 @@ interface ContactFormProps {
   submitButtonText?: string;
 }
 
-export default function ContactForm({ 
-  title = "Send me a message",
+export default function ContactForm({
+  title = 'Send me a message',
   onSubmit,
   initialData = {},
-  submitButtonText = "Send Message"
+  submitButtonText = 'Send Message',
 }: ContactFormProps) {
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
     subject: '',
     message: '',
-    ...initialData
+    ...initialData,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
@@ -43,7 +35,7 @@ export default function ContactForm({
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -54,20 +46,20 @@ export default function ContactForm({
 
     try {
       let success = true;
-      
+
       if (onSubmit) {
         success = await onSubmit(formData);
       } else {
         // Default simulation
         await new Promise(resolve => setTimeout(resolve, 2000));
       }
-      
+
       if (success) {
         setFormData({
           name: '',
           email: '',
           subject: '',
-          message: ''
+          message: '',
         });
         setSubmitStatus('success');
       } else {
@@ -85,13 +77,13 @@ export default function ContactForm({
       <Typography variant="h5" component="h2" gutterBottom>
         {title}
       </Typography>
-      
+
       {submitStatus === 'success' && (
         <Alert severity="success" sx={{ marginBottom: 2 }}>
           Thank you for your message! I'll get back to you soon.
         </Alert>
       )}
-      
+
       {submitStatus === 'error' && (
         <Alert severity="error" sx={{ marginBottom: 2 }}>
           Something went wrong. Please try again or contact me directly.
@@ -100,11 +92,13 @@ export default function ContactForm({
 
       <form onSubmit={handleSubmit}>
         <Stack spacing={3}>
-          <Box sx={{ 
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
-            gap: 2
-          }}>
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+              gap: 2,
+            }}
+          >
             <TextField
               label="Name"
               name="name"
@@ -125,7 +119,7 @@ export default function ContactForm({
               disabled={isSubmitting}
             />
           </Box>
-          
+
           <TextField
             label="Subject"
             name="subject"
@@ -135,7 +129,7 @@ export default function ContactForm({
             fullWidth
             disabled={isSubmitting}
           />
-          
+
           <TextField
             label="Message"
             name="message"
@@ -147,7 +141,7 @@ export default function ContactForm({
             fullWidth
             disabled={isSubmitting}
           />
-          
+
           <Button
             type="submit"
             variant="contained"

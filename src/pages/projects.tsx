@@ -7,9 +7,12 @@ export default function Projects() {
     <DefaultTemplate>
       <Head>
         <title>Projects - My Portfolio</title>
-        <meta name="description" content="Explore my portfolio of web development projects and applications." />
+        <meta
+          name="description"
+          content="Explore my portfolio of web development projects and applications."
+        />
       </Head>
-      
+
       <ProjectsPageContent />
     </DefaultTemplate>
   );
