@@ -9,7 +9,7 @@ export default function About() {
         <title>About - My Portfolio</title>
         <meta name="description" content="Learn more about me, my background, and my skills." />
       </Head>
-      
+
       <AboutPageContent />
     </DefaultTemplate>
   );
