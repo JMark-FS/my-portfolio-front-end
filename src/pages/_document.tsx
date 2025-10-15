@@ -11,6 +11,7 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
           rel="stylesheet"
         />
+        <link rel="icon" href="/favicon.ico"></link>
       </Head>
       <body style={{ margin: 0 }}>
         <InitColorSchemeScript attribute="class" />

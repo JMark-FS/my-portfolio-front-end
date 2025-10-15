@@ -1,6 +1,7 @@
 import { Box, Stack, Typography } from '@mui/material';
 import { DefaultTemplate } from './DefaultTemplate';
 import Image from 'next/image';
+import { MINIMUM_TOP_HEADER_HEIGHT } from '../organisms/header-footer/DefaultPageHeader';
 
 export default function AuthPageTemplate({ children }: { children: React.ReactNode }) {
   return (
@@ -16,7 +17,7 @@ export default function AuthPageTemplate({ children }: { children: React.ReactNo
       >
         <Box
           sx={{
-            backgroundImage: 'url(/dealer-invite-email-bg-img.jpeg)',
+            backgroundImage: 'url(/ILSVRC2012_val_00001273.jpeg)',
             filter: 'grayscale(100%)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
@@ -45,15 +46,15 @@ export default function AuthPageTemplate({ children }: { children: React.ReactNo
               sx={{ width: '30px', height: 'auto', aspectRatio: '1/1' }}
             >
               <Image
-                src="/slydyn-logo.png"
-                alt="Slydyn Logo"
+                src="/portfolio-logo.png"
+                alt="Portfolio Logo"
                 width={50}
                 height={50}
                 style={{ width: 'inherit', height: 'inherit' }}
               />
             </Stack>
             <Typography variant="h6" textTransform="uppercase">
-              SLYDYN
+              Welcome To Portfolio
             </Typography>
           </Stack>
           {children}

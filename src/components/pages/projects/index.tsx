@@ -6,18 +6,18 @@ export default function ProjectsPageContent() {
   const projects: Project[] = [
     {
       id: 1,
-      title: 'E-Commerce Platform',
+      title: 'Slydyn',
       description:
         'A full-stack e-commerce application built with Next.js and Node.js. Features include user authentication, product catalog, shopping cart, and payment integration.',
       image: '/assets/project-1.jpg',
       technologies: ['Next.js', 'Node.js', 'MongoDB', 'Stripe', 'TypeScript'],
       githubUrl: 'https://github.com/username/ecommerce-platform',
-      liveUrl: 'https://ecommerce-demo.com',
+      liveUrl: 'https://www.slydyn.com/',
       featured: true,
     },
     {
       id: 2,
-      title: 'Task Management App',
+      title: 'QuizMaster',
       description:
         'A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.',
       image: '/assets/project-2.jpg',

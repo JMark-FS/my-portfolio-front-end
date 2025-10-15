@@ -47,11 +47,18 @@ export default function AboutPageContent() {
 
   const education = [
     {
-      degree: 'Computer Science Degree',
-      institution: 'University Name',
-      duration: '2018 - 2022',
+      degree: 'Bachelor of Computer Science',
+      institution: 'University of the Philippines - Cebu',
+      duration: '2019 - 2023',
       description:
-        'Graduated with honors. Specialized in software engineering and web development. Participated in various coding competitions and hackathons.',
+        'Graduated Magna Cum Laude. Specialized in software engineering and web development. Participated in various coding competitions and hackathons.',
+    },
+    {
+      degree: 'Master of Engineering in Artificial Intelligence',
+      institution: 'University of the Philippines - Diliman',
+      duration: '2014 - PRESENT (CURRENT)',
+      description:
+        'Graduated Magna Cum Laude. Specialized in software engineering and web development. Participated in various coding competitions and hackathons.',
     },
   ];
 

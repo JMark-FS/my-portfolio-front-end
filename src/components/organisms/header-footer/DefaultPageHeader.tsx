@@ -1,3 +1,4 @@
+import DefaultThemeSelect from '@/components/molecules/Select/DefaultThemeSelect';
 import { useAuthContext } from '@/contexts/AuthContext/AuthContext';
 import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material';
 import { Box, Button, Popover, Stack, Typography } from '@mui/material';
@@ -36,25 +37,36 @@ export default function DefaultPageHeader() {
       right={0}
       top={0}
       zIndex={998}
+      bgcolor="inherit"
     >
       <Box>
         {/* Add content of header */}
         <Typography variant="h6">My Portfolio</Typography>
         <Stack direction="row" spacing={2}>
-          <Button component={Link} href="/" color="inherit">
+          <Button component={Link} href="/">
             Home
           </Button>
-          <Button component={Link} href="/about" color="inherit">
+          <Button component={Link} href="/about">
             About
           </Button>
-          <Button component={Link} href="/projects" color="inherit">
+          <Button component={Link} href="/projects">
             Projects
           </Button>
-          <Button component={Link} href="/contact" color="inherit">
+          <Button component={Link} href="/contact">
             Contact
           </Button>
         </Stack>
       </Box>
+      <Stack direction="row" spacing={2}>
+        {' '}
+        <Button component={Link} href="/auth/sign-in">
+          Sign In
+        </Button>
+        <Button component={Link} href="/auth/sign-up">
+          Sign Up
+        </Button>
+        <DefaultThemeSelect />
+      </Stack>
     </Box>
   );
 }
